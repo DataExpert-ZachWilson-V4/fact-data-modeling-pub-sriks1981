@@ -4,7 +4,7 @@ WITH today AS (
     FROM srik1981.user_devices_cumulated
     WHERE date = DATE'2023-01-07'
 ),
-date_list_int AS ( -- Build the CTE for 
+date_list_int AS ( -- Build the CTE for datelist implementation
     SELECT 
         user_id,
         browser_type,

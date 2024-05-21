@@ -8,7 +8,7 @@ CREATE OR REPLACE TABLE srik1981.host_activity_reduced (
     metric_array ARRAY(INTEGER),
     -- Start of month
     month_start VARCHAR
-)WITH (
+) WITH (
     -- PARQUET format
     format = 'PARQUET',
     -- Partitioning stratergy

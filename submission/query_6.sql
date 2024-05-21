@@ -14,8 +14,9 @@ today AS ( -- Select today's data from web_events table
 SELECT 
     coalesce(y.host, t.host) AS host,
     CASE 
-        WHEN y.host_activity_datelist IS NOT NULL THEN ARRAY[cast(t.event_time AS date)] || y.host_activity_datelist 
-        ELSE ARRAY[cast(t.event_time AS date)]
+        WHEN y.host_activity_datelist IS NOT NULL AND t.event_time IS NOT NULL THEN ARRAY[cast(t.event_time AS date)] || y.host_activity_datelist 
+        WHEN t.event_time IS NOT NULL THEN ARRAY[cast(t.event_time AS date)]
+        ELSE y.host_activity_datelist
     END AS host_activity_datelist,
     DATE(t.event_time) AS date -- Date which represents the row
 FROM today t 

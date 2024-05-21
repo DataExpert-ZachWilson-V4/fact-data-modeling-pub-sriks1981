@@ -7,7 +7,9 @@ WITH dedup AS (
             ORDER BY game_id, player_id, team_id) AS rn
     FROM bootcamp.nba_game_details
 )
-SELECT -- Select all the columns except the ranked column and filter out only the first row from the group of duplicates
+-- Select all the columns except the ranked column 
+--  filter out only the first row from the group of duplicates
+SELECT
     game_id, team_id, team_abbreviation, team_city, player_id, 
     player_name, nickname, start_position, comment, min, fgm, fga,
     fg_pct, fg3m, fg3a, fg3_pct, ftm, fta, ft_pct, oreb, dreb, 

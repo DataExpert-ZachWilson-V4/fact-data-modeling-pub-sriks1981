@@ -9,7 +9,7 @@ today AS ( -- Build latest snapshot
     SELECT *
     FROM srik1981.daily_web_metrics
     WHERE date = DATE'2023-08-02'
-) -- Final query to load the data into the table
+) -- Final query to combine the 'yesterday' and 'today' data and insert the combined data into the 'host_activity_reduced' table
 SELECT
     COALESCE(y.host, t.host) AS host,
     COALESCE(y.metric_name, t.metric_name) AS metric_name,

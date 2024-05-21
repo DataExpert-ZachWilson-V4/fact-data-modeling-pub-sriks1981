@@ -10,10 +10,13 @@ today AS ( -- Build current day's data using the tables web_events and devices
         w.user_id, 
         d.browser_type, 
         CAST(date_trunc('day', event_time) AS DATE) AS event_date, 
-        DATE(event_time) AS date
+        COUNT(1)
     FROM bootcamp.web_events w
     JOIN bootcamp.devices d ON w.device_id = d.device_id
     WHERE DATE(event_time) = DATE'2023-01-01'
+    GROUP BY w.user_id, 
+        d.browser_type, 
+        CAST(date_trunc('day', event_time) AS DATE)
 ) -- Build the final query for loading
 SELECT 
     coalesce(y.user_id, t.user_id) AS user_id,
@@ -22,6 +25,6 @@ SELECT
         WHEN y.dates_active IS NOT NULL THEN ARRAY[t.event_date] || y.dates_active
         ELSE ARRAY[t.event_date]
     END AS dates_active,
-    t.date AS date -- Date which represents the row
+    t.event_date AS date -- Date which represents the row
 FROM today t FULL OUTER JOIN yesterday y
 ON t.user_id = y.user_id
