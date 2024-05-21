@@ -1,6 +1,6 @@
 -- Create table for tracking reduced fact host activity
 CREATE OR REPLACE TABLE srik1981.host_activity_reduced (
-    -- HOst name
+    -- Host name
     host VARCHAR,
     -- Name of the metric
     metric_name VARCHAR,
@@ -11,6 +11,6 @@ CREATE OR REPLACE TABLE srik1981.host_activity_reduced (
 ) WITH (
     -- PARQUET format
     format = 'PARQUET',
-    -- Partitioning stratergy
+    -- Partitioning strategy
     partitioning = ARRAY['metric_name','month_start']
 )

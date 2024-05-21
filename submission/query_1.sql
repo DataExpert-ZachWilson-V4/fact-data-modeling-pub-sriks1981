@@ -3,7 +3,7 @@
 WITH dedup AS (
     SELECT 
         *, 
-        row_number() OVER (PARTITION BY game_id, player_id, team_id 
+        row_number() OVER (PARTITION BY game_id, player_id, team_id -- ROW_NUMBER is an analytical function which assign unique sequence for each row based on the combination of the partitioned columns
             ORDER BY game_id, player_id, team_id) AS rn
     FROM bootcamp.nba_game_details
 )

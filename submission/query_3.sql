@@ -9,8 +9,7 @@ today AS ( -- Build current day's data using the tables web_events and devices
     SELECT 
         w.user_id, 
         d.browser_type, 
-        CAST(date_trunc('day', event_time) AS DATE) AS event_date, 
-        COUNT(1)
+        CAST(date_trunc('day', event_time) AS DATE) AS event_date
     FROM bootcamp.web_events w
     JOIN bootcamp.devices d ON w.device_id = d.device_id
     WHERE DATE(event_time) = DATE'2023-01-01'
