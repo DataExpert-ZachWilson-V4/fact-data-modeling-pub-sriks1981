@@ -1,4 +1,4 @@
--- Create table for tracking reduced host activity
+-- Create table for tracking reduced fact host activity
 CREATE OR REPLACE TABLE srik1981.host_activity_reduced (
     -- HOst name
     host VARCHAR,
