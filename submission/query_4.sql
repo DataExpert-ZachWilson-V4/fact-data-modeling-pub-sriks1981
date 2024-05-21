@@ -1,11 +1,10 @@
-
-
+-- Build a CTE of previous day snapshot
 WITH today AS (
     SELECT * 
     FROM srik1981.user_devices_cumulated
     WHERE date = DATE'2023-01-07'
 ),
-date_list_int AS (
+date_list_int AS ( -- Build the CTE for 
     SELECT 
         user_id,
         browser_type,
@@ -22,7 +21,7 @@ date_list_int AS (
         user_id,
         browser_type
 )
-SELECT 
+SELECT -- Final query to convert the date list implementation to base-2 integer datelist representation
     *,
     to_base(history_int,2) AS history_in_binary,
     to_base(from_base('11111110000000000000000000000000', 2), 2) AS weekly_base,

@@ -17,6 +17,6 @@ SELECT
         WHEN y.host_activity_datelist IS NOT NULL THEN ARRAY[cast(t.event_time AS date)] || y.host_activity_datelist 
         ELSE ARRAY[cast(t.event_time AS date)]
     END AS host_activity_datelist,
-    DATE(t.event_time) AS date 
+    DATE(t.event_time) AS date -- Date which represents the row
 FROM today t 
 FULL OUTER JOIN yesterday y ON y.host = t.host

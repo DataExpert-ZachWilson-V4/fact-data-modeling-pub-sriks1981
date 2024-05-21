@@ -8,8 +8,7 @@ CREATE OR REPLACE TABLE srik1981.user_devices_cumulated (
     dates_active ARRAY(DATE),
     -- Row date
     date DATE
-)
-WITH (
+)WITH (
     -- Store in PARQUET
     format = 'PARQUET',
     -- Partition by Array of dates.

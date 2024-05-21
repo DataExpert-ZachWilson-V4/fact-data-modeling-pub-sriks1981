@@ -22,6 +22,6 @@ SELECT
         WHEN y.dates_active IS NOT NULL THEN ARRAY[t.event_date] || y.dates_active
         ELSE ARRAY[t.event_date]
     END AS dates_active,
-    t.date AS date
+    t.date AS date -- Date which represents the row
 FROM today t FULL OUTER JOIN yesterday y
 ON t.user_id = y.user_id

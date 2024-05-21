@@ -6,8 +6,7 @@ CREATE OR REPLACE TABLE srik1981.hosts_cumulated (
     host_activity_datelist ARRAY(DATE),
     -- Date the row represents
     date DATE
-)
-WITH (
+)WITH (
     -- Store in PARQUET
     format = 'PARQUET',
     -- Partition by Array of dates.

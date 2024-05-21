@@ -3,7 +3,8 @@
 WITH dedup AS (
     SELECT 
         *, 
-        row_number() OVER (PARTITION BY game_id, player_id, team_id ORDER BY game_id, player_id, team_id) AS rn
+        row_number() OVER (PARTITION BY game_id, player_id, team_id 
+            ORDER BY game_id, player_id, team_id) AS rn
     FROM bootcamp.nba_game_details
 )
 SELECT -- Select all the columns except the ranked column and filter out only the first row from the group of duplicates
@@ -12,4 +13,4 @@ SELECT -- Select all the columns except the ranked column and filter out only th
     fg_pct, fg3m, fg3a, fg3_pct, ftm, fta, ft_pct, oreb, dreb, 
     reb, ast, stl, blk, to,pf,pts, plus_minus
 FROM dedup 
-WHERE rn = 1
+WHERE rn = 1 -- Select only the first value
